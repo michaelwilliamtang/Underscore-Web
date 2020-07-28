@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
@@ -27,6 +28,8 @@ mongoose.connect(process.env.mongoURI, {
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
 
+const app = express();
+
 // MIDDLEWARE
 // handlebars middleware
 app.engine('handlebars', exphbs({
@@ -34,6 +37,8 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
+// static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // setup session
 app.use(cookieParser());

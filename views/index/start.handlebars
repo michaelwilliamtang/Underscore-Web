@@ -1,6 +1,9 @@
-<h1>Underscore</h1>
-<p>Welcome to the Underscore network!</p>
-{{#if user}}
-{{else}}
-<a href="/auth/google" class="red darken-1 btn"><i class="fa fa-google left"></i>Google Login</a>
-{{/if}}
+<div class="jumbotron text-center">
+    <h1 class="display-3">Underscore</h1>
+    <p class="lead">Welcome to the Underscore network!</p>
+    {{#if user}}
+    {{else}}
+    <a href="/auth/google">
+        <img src="/img/web-google-login/2x/btn_google_signin_light_normal_web@2x.png" alt="Login With Google" class="google-button pb-2"></a>
+    {{/if}}
+</div>
