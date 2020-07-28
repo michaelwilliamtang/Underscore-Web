@@ -37,7 +37,7 @@ router.post('/', ensureAuthenticated, (req, res) => {
         allowComments: allowComments,
         user: req.user.id
     }
-    console.log(newPost);
+    // console.log(newPost);
 
     new Post(newPost)
         .save()

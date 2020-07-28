@@ -1,4 +1,4 @@
-{{#if success_msg}}
+{{!-- {{#if success_msg}}
 <div class="alert alert-success alert-dismissable fade show">
     {{success_msg}}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -14,4 +14,12 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
+{{/if}} --}}
+
+{{#if success_msg}}
+<body onload="M.toast({html: '{{success_msg}}', classes: 'green'})"></body>
+{{/if}}
+
+{{#if error_msg}}
+<body onload="M.toast({html: '{{error_msg}}', classes: 'red'})"></body>
 {{/if}}

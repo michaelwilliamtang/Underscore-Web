@@ -1,4 +1,43 @@
-<div class="card card-body">
+<h1>New Post</h1>
+<div class="row">
+    <form action="/posts" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field">
+                <input type="url" name="link" class="validate" required="" aria-required="true">
+                <label for="link">Link</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <select name="visib" class="validate" required="" aria-required="true">
+                    <option value="public" selected>Public</option>
+                    <option value="private">Private</option>
+                </select>
+                <label for="visib">Visibility</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <p>
+                <label>
+                    <input type="checkbox" name="allowComments" class="filled-in" id="filled-in-box" checked="checked" class="validate" required="" aria-required="true">
+                    <span>Allow Comments</span>
+                </label>
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <textarea id="snippet" name="snippet" class="materialize-textarea" class="validate" required="" aria-required="true"></textarea>
+                <label for="snippet">Snippet</label>
+            </div>
+        </div>
+
+        <input type="submit" value="save" class="btn">
+    </form>
+</div>
+{{!-- <div class="card card-body">
     <h3>New Post</h3>
     <form action="/posts" method="post">
         <div class="form-group">
@@ -26,4 +65,4 @@
 
         <button type="submit" class="btn btn-primary">Post</button>
     </form>
-</div>
+</div> --}}

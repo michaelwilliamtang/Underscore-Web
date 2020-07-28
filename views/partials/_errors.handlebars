@@ -1,7 +1,15 @@
-{{#if error}}
+{{!-- {{#if error}}
 <div class="alert alert-danger">{{error}}</div>
 {{/if}}
 
 {{#each errors}}
 <div class="alert alert-danger">{{text}}</div>
+{{/each}} --}}
+
+{{#if error}}
+<body onload="M.toast({html: '{{error}}', classes: 'red'})">
+{{/if}}
+
+{{#each errors}}
+<body onload="M.toast({html: '{{text}}', classes: 'red'})">
 {{/each}}
