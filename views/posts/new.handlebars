@@ -1,0 +1,29 @@
+<div class="card card-body">
+    <h3>New Post</h3>
+    <form action="/posts" method="post">
+        <div class="form-group">
+            <label for="link">Link</label>
+            <input type="url" class="form-control" name="link" required>
+        </div>
+
+        <div class="form-group">
+            <label for="snippet">Snippet</label>
+            <textarea class="form-control" name="snippet" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="visib" class="pr-2">Visibility</label>
+            <select name="visib">
+                <option value="public" selected>Public</option>
+                <option value="private">Private</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="allowComments" class="pr-2">Allow Comments</label>
+            <input type="checkbox" name="allowComments" class="filled-in" id="filled-in-box" checked="checked">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+</div>

@@ -2,6 +2,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
 
 // load models
+require('../models/User');
 const User = mongoose.model('users');
 
 module.exports = function (passport) {

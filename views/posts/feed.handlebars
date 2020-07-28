@@ -1,0 +1,23 @@
+<h1 class="pb-2">Feed</h1>
+    <div class="row">
+    {{#each posts}}
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-content center-align">
+                <h4>{{link}}</h4>
+                <p class="snippet">{{snippet}}</p>
+                <br>
+                
+            </div>
+        </div>
+        {{!-- <a href="/ideas/edit/{{id}}" class="btn btn-dark btn-block mb-2">Edit</a> --}}
+        {{!-- <form method="post" action="/ideas/{{id}}?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn btn-danger btn-block" value="Delete">
+        </form> --}}
+    </div>
+    {{else}}
+    <p>No posts yet</p>
+    <a href="/posts/new">Write the first!</a>
+    {{/each}}
+</div>
