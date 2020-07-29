@@ -7,6 +7,10 @@ const PostSchema = new Schema({
         type: String,
         required: true
     },
+    // hostname: {
+    //     type: String,
+    //     required: true
+    // },
     snippet: {
         type: String,
         required: true
@@ -27,6 +31,12 @@ const PostSchema = new Schema({
         commentUser: {
             type: Schema.Types.ObjectId,
             ref:'users'
+        }
+    }],
+    tags: [{
+        tag: {
+            type: String,
+            required: true
         }
     }],
     user: {

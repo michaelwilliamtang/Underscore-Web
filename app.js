@@ -29,9 +29,9 @@ const posts = require('./routes/posts');
 const auth = require('./routes/auth');
 const account = require('./routes/account');
 
-// loadh elpers
+// load helpers
 const {
-    formatDate, truncate
+    formatDate, truncate, select, accessIcons
 } = require('./helpers/hbs');
 
 // mongoose connect
@@ -48,7 +48,9 @@ mongoose.connect(process.env.mongoURI, {
 app.engine('handlebars', exphbs({
     helpers: {
         formatDate: formatDate,
-        truncate: truncate
+        truncate: truncate,
+        select: select,
+        accessIcons: accessIcons
     },
     defaultLayout: 'main',
     handlebars: allowInsecurePrototypeAccess(Handlebars)

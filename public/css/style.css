@@ -1,8 +1,44 @@
 .google-button {
-    width:150px;
+    width:180px;
 }
+
+/* .google-button:hover {
+    opacity:1.5;
+} */
 
 .post-text {
     height:120px;
     word-wrap: break-word;
+}
+
+.chrome-button {
+    width:150px;
+}
+
+/* .valign-wrapper {
+	position:absolute;
+	top: 50%;
+	transform: translateY(-50%) translateX(-50%);
+    left: 50%;
+    flex-wrap: wrap;
+} */
+
+.vert-align {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#delete-form {
+    display: inline;
+}
+
+.background-img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.dash-visib {
+    text-transform: capitalize;
 }

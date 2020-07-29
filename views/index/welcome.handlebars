@@ -1,9 +1,33 @@
-<div class="jumbotron text-center">
-    <h1 class="display-3">Underscore</h1>
-    <p class="lead">Welcome to the Underscore network!</p>
-    {{#if user}}
-    {{else}}
-    <a href="/auth/google">
-        <img src="/img/web-google-login/2x/btn_google_signin_light_normal_web@2x.png" alt="Login With Google" class="google-button pb-2"></a>
-    {{/if}}
+<div class="vert-align">
+    <h1 class="title white-text">Underscore_</h1>
+    <blockquote class="flow-text white-text center-align">Welcome to the Underscore network!</blockquote>
+    <div>
+            <a href="/auth/google">
+                <div class="card hoverable">
+                    {{!-- <div class="card-content">
+                        <img class="google-button" src="img/google-logo.png" alt="Login With Google">Login With Google
+                    </div> --}}
+                    {{!-- <img class="google-button" src="/img/web-google-login/2x/btn_google_signin_light_normal_web@2x.png" alt="Login With Google"> --}}
+                    <img class="google-button" src="/img/google-sign-in4.png" alt="Login With Google">
+                </div>
+            </a>
+            <a href="https://chrome.google.com/webstore/category/extensions">
+                <div class="card hoverable">
+                    <img class="chrome-button" src="img/ChromeWebStore_Badge_v2_496x150.png">
+                </div>
+            </a>
+    </div>
 </div>
+</div>
+
+{{!-- <div>
+    <div class="center-align">
+        <div class="container">
+            <h1 class="title grey-text text-lighten-3">Underscore</h1>
+            <blockquote class="flow-text">Welcome to the Underscore network!</blockquote>
+            <a href="/auth/google">
+                <img src="/img/web-google-login/2x/btn_google_signin_light_normal_web@2x.png" alt="Login With Google" class="google-button">
+            </a>
+        </div>
+    </div>
+</div> --}}

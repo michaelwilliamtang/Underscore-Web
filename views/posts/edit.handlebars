@@ -1,19 +1,21 @@
-<h1>New Post</h1>
-<div class="row"></div>
+<h1>Edit Post</h1>
 <div class="row">
-    <form action="/posts" method="post" class="col s12">
+    <form action="/posts/{{post.id}}?_method=PUT" method="post" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
         <div class="row">
             <div class="input-field">
-                <input type="url" name="link" class="validate" required="" aria-required="true">
+                <input type="url" name="link" class="validate" required="" aria-required="true" value={{post.link}}>
                 <label for="link">Link</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field">
-                <select name="visib" class="validate" required="" aria-required="true">
+                <select name="visib">
+                     {{#select post.visib}}
                     <option value="public" selected>Public</option>
                     <option value="private">Private</option>
+                    {{/select}}
                 </select>
                 <label for="visib">Visibility</label>
             </div>
@@ -22,7 +24,7 @@
         <div class="row">
             <p>
                 <label>
-                    <input type="checkbox" name="allowComments" class="filled-in" id="filled-in-box" checked="checked">
+                    <input type="checkbox" name="allowComments" class="filled-in" id="filled-in-box" {{#if post.allowComments}} checked="checked" {{/if}}>
                     <span>Allow Comments</span>
                 </label>
             </p>
@@ -30,7 +32,7 @@
 
         <div class="row">
             <div class="input-field">
-                <textarea id="snippet" name="snippet" class="materialize-textarea" class="validate" required="" aria-required="true"></textarea>
+                <textarea id="snippet" name="snippet" class="materialize-textarea" class="validate" required="" aria-required="true" value={{post.snippet}}></textarea>
                 <label for="snippet">Snippet</label>
             </div>
         </div>

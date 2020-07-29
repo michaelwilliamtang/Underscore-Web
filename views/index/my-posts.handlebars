@@ -1,0 +1,45 @@
+<h1>Welcome, {{user.firstName}}</h1>
+<h4>My Posts</h4>
+{{#if posts}}
+<table class="striped">
+    <thead>
+        <tr>
+            <th>Link</th>
+            <th>Date</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each posts}}
+        <tr>
+            <td><a href="/posts/show/{{id}}">{{link}}</a></td>
+            <td>{{formatDate data 'MMMM do YYYY'}}</td>
+            <td><span class="dash-visib">{{visib}}</span></td>
+             <td>
+                <a class="btn left-align orange" href="/posts/show/{{id}}">
+                    READ MORE
+                </a>
+            </td>
+            <td>
+                <a class="btn left-align" href="/posts/edit/{{id}}">
+                    <i class="fa fa-pencil"></i> Edit
+                </a>
+            </td>
+            <td>
+                <form action="/posts/{{id}}?_method=DELETE" method="post" id="delete-form">
+                    <input type="hidden" name="method" value="DELETE">
+                    <button type="submit" class="btn red">
+                        <i class="fa fa-remove"></i> Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<p>No posts yet</p>
+<a href="/posts/new">Write my first!</a>
+{{/if}}
