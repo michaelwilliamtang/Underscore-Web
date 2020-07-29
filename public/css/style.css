@@ -1,3 +1,8 @@
 .google-button {
     width:150px;
 }
+
+.post-text {
+    height:120px;
+    word-wrap: break-word;
+}

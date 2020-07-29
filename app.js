@@ -29,7 +29,13 @@ const posts = require('./routes/posts');
 const auth = require('./routes/auth');
 const account = require('./routes/account');
 
+// loadh elpers
+const {
+    formatDate, truncate
+} = require('./helpers/hbs');
+
 // mongoose connect
+mongoose.Promise = global.Promise;
 mongoose.connect(process.env.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -40,6 +46,10 @@ mongoose.connect(process.env.mongoURI, {
 // MIDDLEWARE
 // handlebars middleware
 app.engine('handlebars', exphbs({
+    helpers: {
+        formatDate: formatDate,
+        truncate: truncate
+    },
     defaultLayout: 'main',
     handlebars: allowInsecurePrototypeAccess(Handlebars)
 }));

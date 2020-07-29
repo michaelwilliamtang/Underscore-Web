@@ -3,22 +3,25 @@
     {{#each posts}}
     <div class="col s12 m4">
         <div class="card">
-            <div class="card-image">
-                <a href="/stories/edit/{{id}}" class="btn-floating halfway-fab red">
-                    <i class="fa fa-pencil"></i>
-                </a>
-            </div>
+            <a href="{{link}}">
+                <div class="card-image card-panel hoverable teal lighten-1">
+                    <h5 class="white-text center-align truncate">{{link}}</h5>
+                    <a href="/stories/edit/{{id}}" class="btn-floating halfway-fab red">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                </div>
+            </a>
             <div class="card-content center-align">
-                <h6>{{link}}</h6>
-                {{!-- {{>button btn="btn-text" addClass='-large' link=this label=this}} --}}
-                <p class="snippet">{{snippet}}</p>
+                <p class="snippet post-text">{{truncate snippet 150}}</p>
                 <br>
                 <div class="chip">
                     <img src="{{user.image}}">{{user.firstName}} {{user.lastName}}
                 </div>
             </div>
+            <div class="card-action">
+                <a href="/posts/show/{{id}}">MORE</a>
+            </div>
         </div>
-
         {{!-- old bootstrap edit/deletes --}}
         {{!-- <a href="/ideas/edit/{{id}}" class="btn btn-dark btn-block mb-2">Edit</a> --}}
         {{!-- <form method="post" action="/ideas/{{id}}?_method=DELETE">
