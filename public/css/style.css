@@ -13,7 +13,11 @@
 
 .logo {
     width: 250px;
-    right: 30px;
+}
+
+.logo-header {
+    width: 55px;
+    margin: 5px;
 }
 
 .stream-post-text {
@@ -52,4 +56,22 @@
 
 .dash-visib {
     text-transform: capitalize;
+}
+
+/* body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+} */
+
+.page-footer {
+    background-color: #26a69a;
+}
+
+nav {
+    background-color: #26a69a;
 }

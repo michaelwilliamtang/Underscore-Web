@@ -1,23 +1,30 @@
-<nav class="teal lighten-1">
-<div class="nav-wrapper">
-    <div class="row">
-    <div class="col s10 offset-s1">
-        <a href="/" class="brand-logo offset-m2"> Underscore_</a>
+<nav>
+    <div class="nav-wrapper">
+        <div class="row">
+        <div class="col s1 offset-s1">
+            <ul>
+                <li><a href="/posts" class="brand-logo offset-m3">
+                    <img class="logo-header brand-logo" src="/img/underscore-logo4-shadow.png">
+                </a></li>
+                {{!-- <li><i class="fa fa-chrome"></i><a class="grey-text text-lighten-3" href="https://chrome.google.com/webstore/category/extensions?hl=en"> Get the Extension!</a></li> --}}
+            </ul>
+            {{!-- <a href="/posts" class="brand-logo offset-m3">Underscore_</a> --}}
+        </div>
+        <div class="col s11">
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                {{#if user}}
+                <li><a href="/posts">Feed</a></li>
+                <li><a href="/my-posts">My Posts</a></li>
+                <li><a class="grey-text text-lighten-3" href="https://chrome.google.com/webstore/category/extensions?hl=en"><i class="fa fa-chrome"></i> Get the Extension!</a></li>
+                <li><a href="/posts/new"><i class="material-icons">add</i></a></li>
+                <li><a href="/account"><i class="material-icons">person</i></a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+                {{else}}
+                <li><a href="/auth/google">Login</a></li>
+                {{/if}}
+            </ul>
+        </div>
+        </div>
     </div>
-    <div class="col s11">
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            {{#if user}}
-            <li><a href="/posts">Feed</a></li>
-            <li><a href="/my-posts">My Posts</a></li>
-            <li><a href="/posts/new"><i class="material-icons">add</i></a></li>
-            <li><a href="/account"><i class="material-icons">person</i></a></li>
-            <li><a href="/auth/logout">Logout</a></li>
-            {{else}}
-            <li><a href="/auth/google">Login</a></li>
-            {{/if}}
-        </ul>
-    </div>
-    </div>
-</div>
 </nav>
     

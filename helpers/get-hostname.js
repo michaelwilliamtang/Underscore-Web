@@ -1,6 +1,6 @@
 module.exports = {
     // source: https://stackoverflow.com/questions/8498592/extract-hostname-name-from-string
-    getHostName : (url) => {
+    getHostname : (url) => {
         let hostname;
 
         if (url.indexOf("//") > -1) {

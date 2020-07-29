@@ -33,6 +33,7 @@ const account = require('./routes/account');
 const {
     formatDate, truncate, select, accessIcons
 } = require('./helpers/hbs');
+const {getHostname} = require('./helpers/get-hostname');
 
 // mongoose connect
 mongoose.Promise = global.Promise;

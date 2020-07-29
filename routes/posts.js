@@ -78,13 +78,14 @@ router.post('/remote/new', (req, res) => {
                 link: req.body.link,
                 snippet: req.body.snippet,
                 visib: req.body.visib,
-                allowComments: 'on',
+                allowComments: true,
                 user: req.body.userid
             }
             console.log(newPost);
         
             new Post(newPost)
                 .save();
+            res.send('Posted successfully');
         }
     });
 });
