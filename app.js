@@ -27,6 +27,7 @@ require('./config/passport')(passport);
 const index = require('./routes/index');
 const posts = require('./routes/posts');
 const auth = require('./routes/auth');
+const account = require('./routes/account');
 
 // mongoose connect
 mongoose.connect(process.env.mongoURI, {
@@ -81,6 +82,7 @@ app.use((req, res, next) => {
 app.use('/', index);
 app.use('/auth', auth);
 app.use('/posts', posts);
+app.use('/account', account);
 
 // LISTEN
 const port = process.env.PORT || 5000;

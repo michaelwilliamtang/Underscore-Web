@@ -26,6 +26,24 @@ router.get('/new', ensureAuthenticated, (req, res) => {
     res.render('posts/new');
 });
 
+// process remote post
+router.post('/remote/new', (req, res) => {
+    // remoteUser = User.findOne({ googleID: "100502227428645182745" })
+
+    // console.log(req.body);
+    const newPost = {
+        link: req.body.link,
+        snippet: req.body.snippet,
+        visib: 'public',
+        allowComments: 'on',
+        user: req.body.userid
+    }
+    console.log(newPost);
+
+    new Post(newPost)
+        .save();
+});
+
 // process form
 router.post('/', ensureAuthenticated, (req, res) => {
     let allowComments = req.body.allowComments;
@@ -37,13 +55,17 @@ router.post('/', ensureAuthenticated, (req, res) => {
         allowComments: allowComments,
         user: req.user.id
     }
-    // console.log(newPost);
+    console.log(newPost);
 
     new Post(newPost)
         .save()
         .then(post => {
-            res.redirect(`/posts/show/${post.id}`);
+            req.flash('success_msg', 'Post uploaded');
+            res.redirect('/posts')
+            // res.redirect(`/posts/show/${post.id}`);
         });
+
+    // old validation
     // let errors = [];
 
     // if (!req.body.link) {

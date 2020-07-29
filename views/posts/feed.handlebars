@@ -3,13 +3,23 @@
     {{#each posts}}
     <div class="col s12 m4">
         <div class="card">
+            <div class="card-image">
+                <a href="/stories/edit/{{id}}" class="btn-floating halfway-fab red">
+                    <i class="fa fa-pencil"></i>
+                </a>
+            </div>
             <div class="card-content center-align">
-                <h4>{{link}}</h4>
+                <h6>{{link}}</h6>
+                {{!-- {{>button btn="btn-text" addClass='-large' link=this label=this}} --}}
                 <p class="snippet">{{snippet}}</p>
                 <br>
-                
+                <div class="chip">
+                    <img src="{{user.image}}">{{user.firstName}} {{user.lastName}}
+                </div>
             </div>
         </div>
+
+        {{!-- old bootstrap edit/deletes --}}
         {{!-- <a href="/ideas/edit/{{id}}" class="btn btn-dark btn-block mb-2">Edit</a> --}}
         {{!-- <form method="post" action="/ideas/{{id}}?_method=DELETE">
             <input type="hidden" name="_method" value="DELETE">
