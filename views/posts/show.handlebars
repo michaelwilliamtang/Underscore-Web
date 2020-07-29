@@ -8,7 +8,43 @@
                 {{{post.snippet}}}
             </div>
         </div>
+        
+        {{#if post.allowComments}}
+        <h4>Comments</h4>
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">New Comment</span>
+                {{#if user}}
+                    <form method="post" action="/posts/comments/{{post.id}}">
+                        <div class="input-field">
+                            <textarea name="commentBody" id="commentBody" class="materialize-textarea"></textarea>
+                            <label for="commentBody">Add Comment</label>
+                        </div>
+                        <input type="submit" value="Submit" class="btn">
+                    </form>
+                {{else}}
+                <p><a href="/auth/google">Login</a> to comment</p>
+                {{/if}}
+            </div>
+        </div>
+
+        {{#each post.comments}}
+        <div class="card">
+            <div class="card-content">
+                <h5>{{commentBody}}</h5>
+                <br>
+                <div class="chip">
+                    <img src="{{commentUser.image}}">
+                    {{commentUser.firstName}} {{commentUser.lastName}}
+                </div>
+                <br>
+                <small>Posted {{formatDate commentDate 'MMMM Do YYYY'}}</small>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
     </div>
+
     <div class="col s12 m3 offset-m1">
         <div class="card center-align">
             <div class="card-content">

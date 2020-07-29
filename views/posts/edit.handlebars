@@ -4,7 +4,7 @@
         <input type="hidden" name="_method" value="PUT">
         <div class="row">
             <div class="input-field">
-                <input type="url" name="link" class="validate" required="" aria-required="true" value={{post.link}}>
+                <input type="url" id="link" name="link" class="validate" required="" aria-required="true" value={{post.link}}>
                 <label for="link">Link</label>
             </div>
         </div>
@@ -32,7 +32,7 @@
 
         <div class="row">
             <div class="input-field">
-                <textarea id="snippet" name="snippet" class="materialize-textarea" class="validate" required="" aria-required="true" value={{post.snippet}}></textarea>
+                <textarea id="snippet" name="snippet" class="materialize-textarea" class="validate" required="" aria-required="true">{{post.snippet}}</textarea>
                 <label for="snippet">Snippet</label>
             </div>
         </div>

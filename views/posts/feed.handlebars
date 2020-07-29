@@ -1,42 +1,19 @@
-{{!-- <h1 class="pb-2">Feed</h1> --}}
 <div class="row"></div>
 <div class="row">
-{{#each posts}}
-<div class="col s12 m4">
-    <div class="card">
-        <a href="{{link}}">
-            <div class="card-image card-panel hoverable teal lighten-1">
-                <h5 class="white-text center-align truncate">{{link}}</h5>
-                {{#if (accessIcons user ../user)}}
-                <a href="/posts/edit/{{id}}" class="btn-floating halfway-fab red">
-                    <i class="fa fa-pencil"></i>
-                </a>
-                {{!-- <a href="/posts/delete/{{id}}" class="btn-floating halfway-fab red inline">
-                    <i class="fa fa-trash"></i>
-                </a> --}}
-                {{/if}}
-            </div>
-        </a>
-        <div class="card-content center-align">
-            <p class="snippet post-text">{{truncate snippet 150}}</p>
-            <br>
-            <div class="chip">
-                <img src="{{user.image}}">{{user.firstName}} {{user.lastName}}
-            </div>
-        </div>
-        <div class="card-action">
-            <a href="/posts/show/{{id}}">MORE</a>
-        </div>
+    <div class="col s12 teal-text text-lighten-1">
+        <ul class="tabs tabs-swipe">
+            <li class="tab col s6">
+                <a href="#stream">Stream</a>
+            </li>
+            <li class="tab col s6">
+                <a href="#grid">Grid</a>
+            </li>
+        </ul>
     </div>
-    {{!-- old bootstrap edit/deletes --}}
-    {{!-- <a href="/ideas/edit/{{id}}" class="btn btn-dark btn-block mb-2">Edit</a> --}}
-    {{!-- <form method="post" action="/ideas/{{id}}?_method=DELETE">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" class="btn btn-danger btn-block" value="Delete">
-    </form> --}}
-</div>
-{{else}}
-<p>No posts yet</p>
-<a href="/posts/new">Write the first!</a>
-{{/each}}
+    <div id="stream" class="col s12">
+        {{> _stream}}
+    </div>
+    <div id="grid" class="col s12">
+        {{> _grid}}
+    </div>
 </div>

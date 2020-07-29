@@ -19,6 +19,10 @@ const PostSchema = new Schema({
         type: String,
         defaultt: 'public'
     },
+    allowComments: {
+        type: Boolean,
+        default: true
+    },
     comments: [{
         commentBody: {
             type: String,

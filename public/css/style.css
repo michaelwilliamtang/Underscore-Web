@@ -1,5 +1,5 @@
 .google-button {
-    width:180px;
+    width: 180px;
 }
 
 /* .google-button:hover {
@@ -7,12 +7,23 @@
 } */
 
 .post-text {
-    height:120px;
+    height: 120px;
     word-wrap: break-word;
 }
 
+.logo {
+    width: 250px;
+    right: 30px;
+}
+
+.stream-post-text {
+    /* height:120px; */
+    word-wrap: break-word;
+}
+
+
 .chrome-button {
-    width:150px;
+    width: 150px;
 }
 
 /* .valign-wrapper {
