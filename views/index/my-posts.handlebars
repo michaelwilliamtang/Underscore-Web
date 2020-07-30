@@ -16,7 +16,7 @@
     <tbody>
         {{#each posts}}
         <tr>
-            <td><a href="/posts/show/{{id}}">{{link}}</a></td>
+            <td class="table-link"><a href="/posts/show/{{id}}" class="truncate">{{link}}</a></td>
             <td>{{formatDate date 'MMMM Do YYYY'}}</td>
             <td><span class="dash-visib">{{visib}}</span></td>
             <td>{{truncate snippet 50}}</td>

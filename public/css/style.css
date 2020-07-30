@@ -97,3 +97,7 @@ nav {
 .logo-header {
     margin-left: 50px;
 }
+
+.table-link {
+    max-width: 200px;
+}
