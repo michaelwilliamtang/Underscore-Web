@@ -27,25 +27,28 @@ router.get('/', ensureAuthenticated, (req, res) => {
 router.get('/search', ensureAuthenticated, (req, res) => {
     // Post.find({ $or:[{visib: 'public'}, {user: req.user.id}] })
     // console.log(req.query.search);
-    Post.countDocuments({ $and:[{ $or:[{tags: { $regex: req.query.search, $options: 'i' }}, {snippet: { $regex: req.query.search, $options: 'i' }}]},
+    let qstring = req.query.search;
+    if (req.query.domainOnly) qstring = getHostname(qstring);
+
+    Post.countDocuments({ $and:[{ $or:[{tags: { $regex: qstring, $options: 'i' }}, {snippet: { $regex: qstring, $options: 'i' }}]},
             {$or:[{visib: 'public'}, {user: req.user.id}]}] }, (err, count) => {
         console.log(count);
         if (count == 0) {
-            req.flash('error_msg', `No results found for ${req.query.search}`);
+            req.flash('error_msg', `No results found for ${qstring}`);
             res.redirect('/posts');
         } else {
-            Post.find({ $and:[{ $or:[{tags: { $regex: req.query.search, $options: 'i' }}, {snippet: { $regex: req.query.search, $options: 'i' }}]},
+            Post.find({ $and:[{ $or:[{tags: { $regex: qstring, $options: 'i' }}, {snippet: { $regex: qstring, $options: 'i' }}]},
             {$or:[{visib: 'public'}, {user: req.user.id}]}] })
             .populate('user')
             .sort({ date: 'desc' })
             .then(posts => {
-                let msg = `Found ${count} results for ${req.query.search}`;
+                let msg = `Found ${count} results for ${qstring}`;
                 // req.flash('success_msg', msg);
                 console.log(msg);
                 res.render('posts/feed', {
                     layout: 'main-raw',
                     posts: posts,
-                    searchString: req.query.search
+                    searchString: qstring
                     // flashMessages: {
                     //     success_msg: msg
                     // }
