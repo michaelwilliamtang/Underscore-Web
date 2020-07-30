@@ -1,5 +1,10 @@
 {{!-- <h1 class="pb-2">Feed</h1> --}}
 <div class="row"></div>
+{{#if searchString}}
+<h5>Showing results for "{{searchString}}"</h5>
+<a class="btn" href="/posts">Back to Feed</a>
+<div class="row"></div>
+{{/if}}
 {{#each posts}}
 <div class="col s12">
     <div class="card s12">

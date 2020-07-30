@@ -27,13 +27,13 @@ router.get('/', ensureAuthenticated, (req, res) => {
 router.get('/search', ensureAuthenticated, (req, res) => {
     // Post.find({ $or:[{visib: 'public'}, {user: req.user.id}] })
     console.log(req.query.search);
-    Post.countDocuments({tags: req.query.search}, (err, count) => {
+    Post.countDocuments({ $and:[{tags: req.query.search}, {$or:[{visib: 'public'}, {user: req.user.id}]}] }, (err, count) => {
         console.log(count);
         if (count == 0) {
             req.flash('error_msg', `No results found for ${req.query.search}`);
             res.redirect('/posts');
         } else {
-            Post.find({ tags: req.query.search })
+            Post.find({ $and:[{tags: req.query.search}, {$or:[{visib: 'public'}, {user: req.user.id}]}] })
             .populate('user')
             .sort({ date: 'desc' })
             .then(posts => {
@@ -42,9 +42,10 @@ router.get('/search', ensureAuthenticated, (req, res) => {
                 console.log(msg);
                 res.render('posts/feed', {
                     posts: posts,
-                    flashMessages: {
-                        success_msg: msg
-                    }
+                    searchString: req.query.search
+                    // flashMessages: {
+                    //     success_msg: msg
+                    // }
                 });
             });
         }
