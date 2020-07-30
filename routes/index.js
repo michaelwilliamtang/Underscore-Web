@@ -13,6 +13,7 @@ router.get('/', ensureGuest, (req, res) => {
 
 router.get('/my-posts', ensureAuthenticated, (req, res) => {
     Post.find({user: req.user.id})
+    .sort({ date: 'desc' })
     .then(posts => {
         res.render('index/my-posts', {
             posts: posts

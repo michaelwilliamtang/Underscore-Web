@@ -115,7 +115,7 @@ router.post('/remote/new', (req, res) => {
             const newPost = {
                 link: req.body.link,
                 snippet: req.body.snippet,
-                visib: req.body.visib,
+                visib: 'public',
                 allowComments: true,
                 tags: [],
                 user: req.body.userid
@@ -163,6 +163,11 @@ router.put('/:id', ensureAuthenticated, (req, res) => {
         post.snippet = req.body.snippet;
         post.visib = req.body.visib;
         post.allowComments = req.body.allowComments == 'on';
+
+        // update tags
+        post.tags = [];
+        const hostTag = getHostname(req.body.link);
+        post.tags.push(hostTag);
 
         post.save()
             .then(post => {

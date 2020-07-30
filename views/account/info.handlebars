@@ -1,14 +1,18 @@
 <h3>Account Information</h3>
 <div class="row">
-    <div class="card col s12 m8">
+    <div class="card col s12 m2">
+        <div class="card-content">
+            <img src="{{user.image}}" class="circle responsive-img">
+        </div>
+    </div>
+    <div class="card col s12 m8 offset-m1">
         <div class="card-content">
             <h5>Name: {{user.firstName}} {{user.lastName}}</h5>
             <h5>User ID: {{user.id}}</h5>
-        </div>
-    </div>
-    <div class="card col s12 m3 offset-m1">
-        <div class="card-content">
-            <img src="{{user.image}}" class="circle responsive-img">
+            <br>
+            <form action="/account/copy-id" method="post">
+                <input type="submit" value="Copy User ID" class="btn" id="copy-clipboard"></div>
+            </form>
         </div>
     </div>
 </div>
