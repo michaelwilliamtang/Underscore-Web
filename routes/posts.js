@@ -27,13 +27,15 @@ router.get('/', ensureAuthenticated, (req, res) => {
 router.get('/search', ensureAuthenticated, (req, res) => {
     // Post.find({ $or:[{visib: 'public'}, {user: req.user.id}] })
     console.log(req.query.search);
-    Post.countDocuments({ $and:[{tags: req.query.search}, {$or:[{visib: 'public'}, {user: req.user.id}]}] }, (err, count) => {
+    Post.countDocuments({ $and:[{ $or:[{tags: { $regex: req.query.search, $options: 'i' }}, {snippet: { $regex: req.query.search, $options: 'i' }}]},
+            {$or:[{visib: 'public'}, {user: req.user.id}]}] }, (err, count) => {
         console.log(count);
         if (count == 0) {
             req.flash('error_msg', `No results found for ${req.query.search}`);
             res.redirect('/posts');
         } else {
-            Post.find({ $and:[{tags: req.query.search}, {$or:[{visib: 'public'}, {user: req.user.id}]}] })
+            Post.find({ $and:[{ $or:[{tags: { $regex: req.query.search, $options: 'i' }}, {snippet: { $regex: req.query.search, $options: 'i' }}]},
+            {$or:[{visib: 'public'}, {user: req.user.id}]}] })
             .populate('user')
             .sort({ date: 'desc' })
             .then(posts => {
@@ -90,7 +92,7 @@ router.post('/', ensureAuthenticated, (req, res) => {
 
     const hostTag = getHostname(req.body.link);
     newPost.tags.push(hostTag);
-    console.log(newPost.tags);
+    // console.log(newPost.tags);
     // console.log(newPost);
 
     new Post(newPost)
@@ -114,8 +116,13 @@ router.post('/remote/new', (req, res) => {
                 snippet: req.body.snippet,
                 visib: req.body.visib,
                 allowComments: true,
+                tags: [],
                 user: req.body.userid
             }
+
+            const hostTag = getHostname(req.body.link);
+            newPost.tags.push(hostTag);
+            // console.log(newPost.tags);
             // console.log(newPost);
         
             new Post(newPost)
