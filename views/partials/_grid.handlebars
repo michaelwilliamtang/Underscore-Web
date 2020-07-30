@@ -23,6 +23,11 @@
             <div class="chip">
                 <img src="{{user.image}}">{{user.firstName}} {{user.lastName}}
             </div>
+            {{#each tags}}
+            <div class="chip">
+                {{this}}
+            </div>
+            {{/each}}
         </div>
         <div class="card-action">
             <a href="/posts/show/{{id}}">MORE</a>

@@ -20,6 +20,10 @@
     margin: 5px;
 }
 
+.nav-left {
+    padding-left: 50px
+}
+
 .stream-post-text {
     /* height:120px; */
     word-wrap: break-word;
@@ -68,10 +72,27 @@ main {
     flex: 1 0 auto;
 }
 
+.main-wrapper {
+    background-color: #eee;
+}
+
+.body-wrapper {
+    background-color: white;
+}
+
 .page-footer {
     background-color: #26a69a;
 }
 
 nav {
     background-color: #26a69a;
+}
+
+.search-bar {
+    max-width: 290pt;
+    margin-left: 150px;
+}
+
+.logo-header {
+    margin-left: 50px;
 }

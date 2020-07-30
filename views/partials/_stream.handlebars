@@ -1,7 +1,7 @@
 {{!-- <h1 class="pb-2">Feed</h1> --}}
 <div class="row"></div>
 {{#each posts}}
-<div class="col s12 m6 offset-m3">
+<div class="col s12">
     <div class="card s12">
         <a href="{{link}}">
             <div class="card-image card-panel hoverable teal lighten-1">
@@ -22,6 +22,11 @@
             <div class="chip">
                 <img src="{{user.image}}">{{user.firstName}} {{user.lastName}}
             </div>
+            {{#each tags}}
+            <div class="chip">
+                {{this}}
+            </div>
+            {{/each}}
         </div>
         <div class="card-action">
             <a href="/posts/show/{{id}}">MORE</a>

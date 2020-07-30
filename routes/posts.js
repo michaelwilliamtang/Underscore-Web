@@ -17,9 +17,37 @@ router.get('/', ensureAuthenticated, (req, res) => {
         .sort({ date: 'desc' })
         .then(posts => {
             res.render('posts/feed', {
+                layout: 'main-raw',
                 posts: posts
             });
         });
+});
+
+// post search
+router.post('/search', ensureAuthenticated, (req, res) => {
+    // Post.find({ $or:[{visib: 'public'}, {user: req.user.id}] })
+    console.log(req.body.search);
+    Post.countDocuments({tags: req.body.search}, (err, count) => {
+        console.log(count);
+        if (count == 0) {
+            req.flash('error_msg', `No results found for ${req.body.search}`);
+            res.redirect('/posts');
+        } else {
+            Post.find({ tags: req.body.search })
+            .populate('user')
+            .sort({ date: 'desc' })
+            .then(posts => {
+                // let msg = `Found ${count} results for ${req.body.search}`;
+                // console.log(msg);
+                res.render('posts/feed', {
+                    posts: posts
+                    // flashMessages: {
+                    //     success_msg: msg
+                    // }
+                });
+            });
+        }
+    });
 });
 
 // single post
@@ -54,9 +82,14 @@ router.post('/', ensureAuthenticated, (req, res) => {
         snippet: req.body.snippet,
         visib: req.body.visib,
         allowComments: req.body.allowComments == 'on',
+        tags: [],
         user: req.user.id
     }
-    console.log(newPost);
+
+    const hostTag = getHostname(req.body.link);
+    newPost.tags.push(hostTag);
+    console.log(newPost.tags);
+    // console.log(newPost);
 
     new Post(newPost)
         .save()
@@ -71,7 +104,7 @@ router.post('/', ensureAuthenticated, (req, res) => {
 router.post('/remote/new', (req, res) => {
     // console.log(req.body);
     // check valid user id
-    User.count({_id: req.body.userid}, (err, count) => {
+    User.countDocuments({_id: req.body.userid}, (err, count) => {
         if (count == 0) res.send('Invalid userid');
         else {
             const newPost = {
@@ -81,7 +114,7 @@ router.post('/remote/new', (req, res) => {
                 allowComments: true,
                 user: req.body.userid
             }
-            console.log(newPost);
+            // console.log(newPost);
         
             new Post(newPost)
                 .save();

@@ -37,12 +37,7 @@ const PostSchema = new Schema({
             ref:'users'
         }
     }],
-    tags: [{
-        tag: {
-            type: String,
-            required: true
-        }
-    }],
+    tags: [String],
     user: {
         type: Schema.Types.ObjectId,
         ref: 'users'
