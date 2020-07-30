@@ -78,6 +78,7 @@ main {
 
 .body-wrapper {
     background-color: white;
+    min-height: 150vh;
 }
 
 .page-footer {

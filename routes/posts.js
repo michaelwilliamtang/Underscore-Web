@@ -26,7 +26,7 @@ router.get('/', ensureAuthenticated, (req, res) => {
 // post search
 router.get('/search', ensureAuthenticated, (req, res) => {
     // Post.find({ $or:[{visib: 'public'}, {user: req.user.id}] })
-    console.log(req.query.search);
+    // console.log(req.query.search);
     Post.countDocuments({ $and:[{ $or:[{tags: { $regex: req.query.search, $options: 'i' }}, {snippet: { $regex: req.query.search, $options: 'i' }}]},
             {$or:[{visib: 'public'}, {user: req.user.id}]}] }, (err, count) => {
         console.log(count);
@@ -43,6 +43,7 @@ router.get('/search', ensureAuthenticated, (req, res) => {
                 // req.flash('success_msg', msg);
                 console.log(msg);
                 res.render('posts/feed', {
+                    layout: 'main-raw',
                     posts: posts,
                     searchString: req.query.search
                     // flashMessages: {

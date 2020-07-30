@@ -7,8 +7,9 @@
             <th>Link</th>
             <th>Date</th>
             <th>Visiblity</th>
-            <th></th>
-            <th></th>
+            <th>Preview</th>
+            <th>View</th>
+            <th>Actions</th>
             <th></th>
         </tr>
     </thead>
@@ -18,6 +19,7 @@
             <td><a href="/posts/show/{{id}}">{{link}}</a></td>
             <td>{{formatDate date 'MMMM Do YYYY'}}</td>
             <td><span class="dash-visib">{{visib}}</span></td>
+            <td>{{truncate snippet 50}}</td>
              <td>
                 <a class="btn left-align orange" href="/posts/show/{{id}}">
                     READ MORE
