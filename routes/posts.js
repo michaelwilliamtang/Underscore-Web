@@ -24,26 +24,27 @@ router.get('/', ensureAuthenticated, (req, res) => {
 });
 
 // post search
-router.post('/search', ensureAuthenticated, (req, res) => {
+router.get('/search', ensureAuthenticated, (req, res) => {
     // Post.find({ $or:[{visib: 'public'}, {user: req.user.id}] })
-    console.log(req.body.search);
-    Post.countDocuments({tags: req.body.search}, (err, count) => {
+    console.log(req.query.search);
+    Post.countDocuments({tags: req.query.search}, (err, count) => {
         console.log(count);
         if (count == 0) {
-            req.flash('error_msg', `No results found for ${req.body.search}`);
+            req.flash('error_msg', `No results found for ${req.query.search}`);
             res.redirect('/posts');
         } else {
-            Post.find({ tags: req.body.search })
+            Post.find({ tags: req.query.search })
             .populate('user')
             .sort({ date: 'desc' })
             .then(posts => {
-                // let msg = `Found ${count} results for ${req.body.search}`;
-                // console.log(msg);
+                let msg = `Found ${count} results for ${req.query.search}`;
+                // req.flash('success_msg', msg);
+                console.log(msg);
                 res.render('posts/feed', {
-                    posts: posts
-                    // flashMessages: {
-                    //     success_msg: msg
-                    // }
+                    posts: posts,
+                    flashMessages: {
+                        success_msg: msg
+                    }
                 });
             });
         }

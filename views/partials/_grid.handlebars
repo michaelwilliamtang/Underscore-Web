@@ -24,9 +24,11 @@
                 <img src="{{user.image}}">{{user.firstName}} {{user.lastName}}
             </div>
             {{#each tags}}
+            <a href="/posts/search?search={{this}}">
             <div class="chip">
                 {{this}}
             </div>
+            </a>
             {{/each}}
         </div>
         <div class="card-action">
