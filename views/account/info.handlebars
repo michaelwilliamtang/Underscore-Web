@@ -10,9 +10,10 @@
             <h5>Name: {{user.firstName}} {{user.lastName}}</h5>
             <h5>User ID: {{user.id}}</h5>
             <br>
-            <form action="/account/copy-id" method="post">
-                <input type="submit" value="Copy User ID" class="btn" id="copy-clipboard"></div>
-            </form>
+            {{!-- <form action="/account/copy-id" method="post">
+                <input type="submit" value="Copy User ID" class="btn copy-btn" id="copy-clipboard"></div>
+            </form> --}}
+            {{!-- <button class="btn copy-btn" data-clipboard-target="{{user.id}}">Copy User ID</button> --}}
         </div>
     </div>
 </div>

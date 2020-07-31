@@ -11,7 +11,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
 // const clipboardy = require('clipboardy');
-const ncp = require("copy-paste");
+// const ncp = require("copy-paste");
 // const xsel = require('xsel');
 
 const app = express();
@@ -85,6 +85,19 @@ app.use(passport.session());
 
 // setup flash
 app.use(flash());
+
+// flash middleware
+app.use((req, res, next) => {
+    res.locals.success_messages = req.flash('success_messages');
+    res.locals.error_messages = req.flash('error_messages');
+    next();
+});
+
+// setup clipboard
+// const clipboard = new ClipboardJS('.btn');
+// clipboard.on('success', (e) => {
+//     req.flash('success_msg', 'Copied to Clipboard');
+// })
 
 // setup global vars
 app.use((req, res, next) => {
