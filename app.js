@@ -11,6 +11,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
 // const clipboardy = require('clipboardy');
+const ncp = require("copy-paste");
 // const xsel = require('xsel');
 
 const app = express();
